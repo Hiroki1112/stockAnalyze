@@ -7,6 +7,15 @@ main.py ->　関数を実行するファイル。
 
 ファイル構成
 ``` bash
-stock -- code
-       |
+stock ┳ code　┳　main.py
+      ┃       ┗　func.py
+      ┃
+      ┃
+      ┣ daily 
+      ┃
+      ┣ stockdata 
+      ┃
+      ┣ output 
+      ┃
+      ┗ tmp
 ```
