@@ -1,4 +1,4 @@
-﻿# stockAnalyze
+﻿# stockAnalyzer
 
 Kabu+からのデータを分析するためのプログラム。
 関数はできるだけ小さく作っています。
