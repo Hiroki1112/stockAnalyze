@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pathlib
+import os,sys
 
 spPrefix = 'japan-all-stock-prices-2_'
 siPrefix = 'japan-all-stock-data_'
@@ -65,12 +66,23 @@ def DataPreprocessing(df,props=None):
                         '年初来高値':float,'年初来高値乖離率(％)':float,'年初来安値':float,'年初来安値乖離率(％)':float
                        })
         
+        return df
         
     elif props == 1:
         #指標データの加工
         deleteColumns = ['名称','市場','業種','時価総額(百万円)','高値日付','安値日付','年初来安値','年初来高値']
         df = df.drop(deleteColumns,axis=1)
-        #
+        
+        #札証などは削除しておく
+        df = df[df['市場'].isin(['東証一部', 'JQS', 'JQG', '東証マザ', '東証二部'])]
+
+        #発行済み株式数が=のものを削除する。
+        df = df[df["発行済株式数"]!='-']
+
+        df = df.astype({"発行済株式数":float,"配当利回り":float,"1株配当":float,"PER（予想）":float,
+                    "PBR（実績）":float,"EPS（予想）":float,"BPS（実績）":float,"最低購入額":float,"単元株":int
+                    })
+        df.info()
     
     elif props == 2:
         #信用残等
