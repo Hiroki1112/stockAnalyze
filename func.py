@@ -7,9 +7,9 @@ import os,sys
 
 spPrefix = 'japan-all-stock-prices-2_'
 siPrefix = 'japan-all-stock-data_'
-sinPrefix = 'japan-all-stock-margin-transactions'
+traPrefix = 'japan-all-stock-margin-transactions'
 finPrefix = 'japan-all-stock-financial-results_'
-prefixList = [spPrefix,siPrefix,finPrefix,sinPrefix]
+prefixList = [spPrefix,siPrefix,finPrefix,traPrefix]
 
 def makedir(dirName):
     #IPOもあるので、毎回確認する。
@@ -105,7 +105,7 @@ def returnCsv(FileNameList):
         for name in FileNameList:
             if spPrefix in name:
                 sp = pd.read_csv('../daily/'+name)
-            elif sinPrefix in name:
+            elif traPrefix in name:
                 si = pd.read_csv('../daily/'+name)
             elif traPrefix in name:
                 tra = pd.read_csv('../daily/'+name)
