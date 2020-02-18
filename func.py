@@ -6,6 +6,13 @@ import pathlib
 import os,sys,datetime
 import tkinter as tk 
 
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import KFold
+import lightgbm as lgb
+from sklearn.linear_model import Ridge
+from sklearn.metrics import mean_squared_error, mean_absolute_error,log_loss
+from sklearn.model_selection import cross_val_score,cross_val_predict,GridSearchCV
+
 spPrefix = 'japan-all-stock-prices-2_'
 siPrefix = 'japan-all-stock-data_'
 traPrefix = 'japan-all-stock-margin-transactions'
@@ -183,8 +190,12 @@ class analyzeData:
                 row_tmp.append('-')
 
             #発行済み株式数 / 出来高
-            
-                
-
 
         return df_tmp
+
+
+class AI:
+    def __init__(self):
+        self.model = LGBMRegressor(min_samples_leaf=3, random_state=0)
+    
+    def predict(self):
