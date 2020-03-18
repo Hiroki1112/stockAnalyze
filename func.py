@@ -13,7 +13,6 @@ finPrefix = 'japan-all-stock-financial-results_'
 prefixList = [spPrefix,siPrefix,finPrefix,traPrefix]
 
 class loadAndSaveData:
-
     def __init__(self):
         #load file
         self.current = pd.read_csv("../data/StockDatas.csv")
